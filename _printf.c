@@ -19,22 +19,19 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (i = 0 ; format && format[i] != '\0'; i++)
 	{
 		if (format[i] != '%')
 		{
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[i], 1);*/
+			/* write(1, &format[i], 1); */
 			printed_chars++;
 		}
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &i);
-			width = get_width(format, &i, list);
-			precision = get_precision(format, &i, list);
 			flags = get_flags(format, &i);
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
